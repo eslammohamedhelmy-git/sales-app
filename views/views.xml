@@ -7,7 +7,6 @@
       <field name="arch" type="xml">
         <tree>
           <field name="product_id"/>
-          <field name="name_product"/>
           <field name="quantity"/>
           <field name="price"/>
           <field name="Total"/>
@@ -34,7 +33,6 @@
         <form>
           <group colspan="2" col="2">
                 <field name="product_id"/>
-                <field name="name_product"/>
                 <field name="quantity"/>
                 <field name="price"/>
                 <field name="Total"/>
@@ -70,21 +68,6 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="shop.action_server">
-      <field name="name">shop server</field>
-      <field name="model_id" ref="model_shop_shop"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
 
     <!-- Top menu item -->
 
@@ -95,12 +78,6 @@
     <menuitem name="product" id="shop_product" parent="shop_menu_root" action="order_line_window"/>
     <menuitem name="order" id="shop_order" parent="shop_menu_root" action="coffee_order_window"/>
 
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="shop.menu_1_list" parent="shop.menu_1"
-              action="shop.action_window"/>
-    <menuitem name="Server to list" id="shop" parent="shop.menu_2"
-              action="shop.action_server"/>
--->
+
   </data>
 </odoo>
