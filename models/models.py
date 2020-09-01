@@ -12,17 +12,18 @@ class order(models.Model):
     date = fields.Date(string="date", default=datetime.today())
     number = fields.Char(string="number")
     description = fields.Text()
-    line_ids = fields.One2many("order.line", "product_id", string="line_id")
+    line_ids = fields.One2many("order.line", "order_id", string="line_id")
 
 
 class product(models.Model):
     _name = 'order.line'
     _description = 'order_line'
 
-    product_id = fields.Many2one("coffee.order", string="name of product", ondelet="set null")
-    name_product = fields.Char(string="name")
+    product_id = fields.Many2one("product.product", string="name of product", change_default=True,
+                                 ondelete='restrict')
+
     quantity = fields.Float(string="quantity", default=1.00)
-    price = fields.Float(string="price")
+    price = fields.Float(string="price", related="product_id.list_price")
     Total = fields.Float(string="total", compute="_total_price")
     order_id = fields.Many2one("coffee.order", string="order_id")
 
