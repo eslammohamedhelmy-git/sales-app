@@ -5,14 +5,16 @@
       <field name="name">order_line_tree</field>
       <field name="model">order.line</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree editable="bottom">
           <field name="product_id"/>
           <field name="quantity"/>
           <field name="price"/>
-          <field name="Total"/>
+          <field name="discount"/>
+          <field name="total"/>
         </tree>
       </field>
     </record>
+
     <record model="ir.ui.view" id="coffee_order_tree">
       <field name="name">coffee_order_tree</field>
       <field name="model">coffee.order</field>
@@ -26,6 +28,15 @@
         </tree>
       </field>
     </record>
+    <record id="unique_sequence_id" model="ir.sequence">
+       <field name="name">Sequence Name Goes Here</field>
+       <field name="code">coffe.order</field>
+       <field name="active">TRUE</field>
+       <field name="prefix">OR</field>
+       <field name="padding">5</field>
+       <field name="number_next">1</field>
+       <field name="number_increment">1</field>
+       </record>
     <record model="ir.ui.view" id="order_line_form">
       <field name="name">order_line_form</field>
       <field name="model">order.line</field>
@@ -35,7 +46,7 @@
                 <field name="product_id"/>
                 <field name="quantity"/>
                 <field name="price"/>
-                <field name="Total"/>
+                <field name="total"/>
           </group >
         </form>
       </field>
